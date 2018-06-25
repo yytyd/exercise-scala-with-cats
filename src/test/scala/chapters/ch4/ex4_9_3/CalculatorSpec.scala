@@ -55,4 +55,29 @@ class CalculatorSpec extends FunSpec with Matchers {
       }
     }
   }
+
+  describe("evalAll") {
+    describe("List(1, 2, +, 3, *)") {
+      it("should calculate and return answer 9") {
+        val program = evalAll(List("1", "2", "+", "3", "*"))
+        program.runA(Nil).value shouldBe 9
+      }
+    }
+
+    describe("List(4, 2, /, 3, +)") {
+      it("should calculate and return answer 5") {
+        val program = evalAll(List("4", "2", "/", "3", "+"))
+        program.runA(Nil).value shouldBe 5
+      }
+    }
+  }
+
+  describe("evalInput") {
+    describe("1 2 +") {
+      it("should calculate nad return answer 3") {
+        val program = evalInput("1 2 +")
+        program shouldBe 3
+      }
+    }
+  }
 }
